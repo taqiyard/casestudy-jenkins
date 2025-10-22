@@ -1,4 +1,5 @@
 image:
-  repository: azeshion21/demo-app
+  repository: taqiyard/demo-app
   tag: latest
 replicaCount: 1
+
