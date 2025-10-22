@@ -5,7 +5,7 @@ pipeline {
     IMAGE = "taqiyard/demo-app"
     TAG = "latest"
     DOCKER_CRED = "docker-hub-credential"
-    KUBECONFIG_CRED = "kubeconfig-dev"
+    KUBECONFIG=/var/lib/jenkins/.kube/config
     NAMESPACE = "default"
     HELM_RELEASE = "casestudy-jenkins1"
   }
@@ -71,4 +71,5 @@ pipeline {
     }
   }
 }
+
 
