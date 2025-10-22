@@ -2,9 +2,9 @@ pipeline {
   agent any
 
   environment {
-    IMAGE = "azeshion21/demo-app"
+    IMAGE = "taqiyard/demo-app"
     TAG = "latest"
-    DOCKER_CRED = "docker-hub"
+    DOCKER_CRED = "docker-hub-credential"
     KUBECONFIG_CRED = "kubeconfig-dev"
     NAMESPACE = "default"
     HELM_RELEASE = "casestudy-jenkins1"
@@ -13,7 +13,7 @@ pipeline {
   stages {
     stage('Checkout Source Code') {
       steps {
-        git url: 'https://github.com/orion2182/casestudy-jenkins.git', branch: 'main'
+        git url: 'https://github.com/taqiyard/casestudy-jenkins.git', branch: 'main'
       }
     }
 
@@ -29,7 +29,7 @@ pipeline {
     stage('Push Docker Image') {
       steps {
         withCredentials([usernamePassword(
-          credentialsId: "docker-hub",
+          credentialsId: "docker-hub-credential",
           usernameVariable: 'USER',
           passwordVariable: 'PASS'
         )]) {
@@ -71,3 +71,4 @@ pipeline {
     }
   }
 }
+
